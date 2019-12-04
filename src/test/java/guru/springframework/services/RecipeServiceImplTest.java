@@ -120,4 +120,9 @@ public class RecipeServiceImplTest {
         //then
         verify(recipeRepository, times(1)).deleteById(anyLong());
     }
+
+    @Test(expected = NumberFormatException.class)
+    public void getRecipiedId_throws_NumberFormatException_when_id_is_not_a_number() throws Exception {
+        recipeService.findById(Long.valueOf("asd"));
+    }
 }
